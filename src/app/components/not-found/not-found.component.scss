@@ -1,0 +1,34 @@
+.container-main-error {
+  text-align: center;
+  padding: 60px;
+}
+.container-main-error .main-error-img {
+  max-width: 350px;
+}
+
+.container-main-error img {
+  display: inline-block;
+}
+.container-main-error .main-error-title {
+  margin-top: 44px;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+}
+.container-main-error .main-error-description {
+  width: 60%;
+  color: #607d8b;
+  margin: 20px auto;
+  line-height: 20px;
+}
+
+.btn-error-page {
+  display: inline-block;
+  background: #2e54cf;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 100px;
+  transition: all 0.2s ease-in-out;
+}
+h1 {
+  font-size: 100px !important;
+}

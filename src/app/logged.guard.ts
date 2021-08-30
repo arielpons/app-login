@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanLoad, Router, UrlTree } from '@angular/router';
 import { LoginService } from './login/login.service';
 
 @Injectable({
@@ -15,6 +14,7 @@ export class LoggedGuard implements CanLoad {
     if (this.loginService.isLogged) {
       return true;
     }
-    return this.router.parseUrl("/login/signin")
+    return this.router.parseUrl("/login/signin");
   }
+
 }

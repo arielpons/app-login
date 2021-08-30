@@ -29,21 +29,19 @@ export class SigninComponent implements OnInit {
   doSubmit() {
 
     if (this.loginForm.invalid) {
-      alert("Completa todos los campos");
+      alert("Todos los campos son obligatorios");
       return;
     }
-
     const { username, password } = this.loginForm.value
     this.loginService.doSignIn(username, password).subscribe(
       (res) => {
         console.log(res)
-        this.router.navigateByUrl("/perfil")
+        this.router.navigateByUrl("/home")
       },
       (err) => {
         alert(err)
       }
     )
-
   }
 
 }

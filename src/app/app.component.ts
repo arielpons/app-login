@@ -7,11 +7,8 @@ import {LoginService} from './login/login.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- isLogged: boolean = false;
   
-  constructor(private loginService: LoginService) {
+  constructor() {
   }
-  get login() {
-    return this.loginService.isLogged;
-  }
+  
 }

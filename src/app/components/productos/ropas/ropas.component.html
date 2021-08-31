@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Productos</h2>
+      <a routerLink="/agregar" class="btn btn-primary">Agregar Producto</a>
+      <div class="table-responsive">
+        <table id="mytable" class="table table-bordred table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Ver</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ropa of Ropas">
+              <td>{{ Ropas.indexOf(ropa) }}</td>
+              <td>{{ ropa.tipo }}</td>
+              <td>{{ ropa.cantidad }}</td>
+              <td>{{ ropa.precio }}</td>
+              <td>{{ ropa.descripcion }}</td>
+              <td>
+                <p data-placement="top" data-toggle="tooltip" title="Ver">
+                  <button  routerLink=":id" class="btn btn-success btn-xs" data-title="Ver" data-toggle="modal" data-target="#ver" data-bs-target="#ver">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                   
+                  </button>
+                </p>
+                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                  <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-bs-target="#editar">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </button>
+                </p>
+              </td>
+              <td>
+                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                  <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" data-bs-target="#eliminar">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modales -->
+<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="editarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarLabel">Editar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Quieres editar este producto?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success">Si</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eliminarLabel">Eliminar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Quieres eliminar este producto?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success">Si</button>
+      </div>
+    </div>
+  </div>
+</div>

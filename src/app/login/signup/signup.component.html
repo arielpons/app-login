@@ -1,15 +1,16 @@
 <div class="col-4 mx-auto text-center">
-    <form 
-    class="form-signup" 
-    [formGroup]="signUpForm" 
-    (ngSubmit)="doSubmit()"
-    >
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input class="form-control" id="inputEmail" formControlName="email" type="text">
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input class="form-control" id="inputUsername" formControlName="username" type="text">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input class="form-control" id="inputPassword" formControlName="password" type="password">
-        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign up</button>
-    </form>
+    <form class="form-signin" [formGroup]="signUpForm" (ngSubmit)="doSubmit()">
+        <label for="inputNombre" class="fw-bold sr-only">Nombre</label>
+        <input class="form-control" id="inputName" type="text" formControlName="nombre">
+        <label for="inputSurname" class="fw-bold sr-only">Apellido</label>
+        <input class="form-control" id="inputApellido" type="text" formControlName="apellido">
+        <label for="inputEmail" class="fw-bold sr-only">Email</label>
+        <input class="form-control" id="inputEmail" type="text" formControlName="email">
+        <label for="inputPassword" class="fw-bold sr-only">Contraseña</label>
+        <input class="form-control" id="inputPassword" type="password" formControlName="password">
+        <div style="display: inline-grid;">
+        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Registrarse</button>
+        <button class="btn btn-lg btn-primary btn-block mt-3" type="button" routerLink="/login/signin">Iniciar sesión</button>
+      </div> 
+      </form>
 </div>

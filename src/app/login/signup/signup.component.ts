@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
-
+import { UsersService } from '../usuarios.service';
 
 @Component({
   templateUrl: './signup.component.html',
@@ -13,27 +12,33 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private LoginService: LoginService,
-    private router: Router) { }
-
+    private usuariosService: UsersService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      email: ['',  [Validators.required, Validators.email]],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(10)]]
-    } );  
+      nombre: ['', [Validators.required, Validators.minLength(3)] ],
+      apellido: ['', [Validators.required, Validators.minLength(3)] ],
+      email: ['', [Validators.required, Validators.email ]],
+      password: ['', [Validators.required, Validators.pattern( new RegExp('^[a-z0-9áéíóúñü@$!%*?&]{3,30}$', 'i') )]],
+    });
   }
-
-  doSubmit() {
+    doSubmit() {
     if (this.signUpForm.invalid) {
-      alert("Completa todos los campos");
+      alert("Completa los campos correctamente");
       return;
     }
-    else{
-      this.router.navigateByUrl("/signin")
-    }
-
+    const { nombre, apellido, email, password } = this.signUpForm.value;
+    this.usuariosService.getRegisterUser(nombre, apellido, email, password).subscribe(
+        (response) => {
+          console.log(response);
+          this.router.navigateByUrl('/login/signin');
+        },
+        (err) => {
+          alert(err.error.message);
+        }
+      );
   }
 }
 

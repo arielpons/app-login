@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class LoginService {
   public user:any[] = [
-    { email: 'admin@gmail.com', username: 'admin', password: '0123456789' },
+    { email: 'admin@gmail.com', nombre: 'admin', password: '0123456789' },
   ];
 
   public isLogged: boolean = false;
@@ -16,48 +16,42 @@ export class LoginService {
  
 
   constructor(private http: HttpClient) {}
-  users:{username: string, password: string, email: string}[] = [];
+  users:{nombre: string, apellido: string, email: string,password: string}[] = [];
   
 
-  doSignIn(username: string, password: string): Observable<any> {
+  doSignIn(email: string, password: string): Observable<any> {
     let response!: Observable<any>;
-    console.log(username === username && password === password);
-    if (username === username && password === password) {
+    if (email === email && password === password) {
       this.isLogged = true;
       response = of({
-        user: username,
         mail: "admin@admin.com",
-        secret: "admin-super-secret"
+        secret: "admin-secret"
       })
     }else{
       response = throwError("Invalid user or password")
     }
     return response.pipe(delay(1000));
   }
+  doLogout(){ 
+    this.isLogged = false; 
+  }
  
-  doSignUp(username: string, password: string, email: string){
+  doSignUp(nombre: string, apellido: string, email: string,password: string){
     let response: Observable<any>;
-    let userNew: any = { email, username, password };
+    let userNew: any = { nombre, apellido, email, password };
     this.users.push(userNew);
     response = of({
-      user: username,
+      nombre: nombre,
+      apellido: apellido,
       email: email,
-      secret: `${username}-super-secret`,
-    });
-      this.isLogged = true;
+      password: password
+    })
       this.isRegister = true;
       console.log(this.isRegister)
-      window.alert(`Registro completado ${username}`)
+      window.alert(`Registro completado ${nombre}`)
     
   }
   getToken() {
     return localStorage.getItem('token');
   }  
-
-  saveToken( token: string ){
-    localStorage.setItem('token', token)
-  }
-  saveUser=(usuario:any)=>{
-    this.user = usuario
-  }
 }

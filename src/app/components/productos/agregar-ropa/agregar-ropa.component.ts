@@ -33,17 +33,12 @@ export class AgregarRopaComponent implements OnInit {
     if (this.addProductForm.invalid) {
       alert('Datos ingresados inválidos');
       return;
-    } else if (
-      tipo !== 'campera' &&
-      tipo !== 'pantalón'&&
-      tipo !== 'buzo' &&
-      tipo !== 'remera' 
-    ) {
+    } else if (tipo !== 'campera' || tipo !== 'pantalón' || tipo !== 'buzo'|| tipo !== 'remera' ) {
       alert('Tipo de ropa no existente');
       return;
     }
 
-    this.productosService.addRopafromAPI(tipo, cantidad, precio, descripcion)
+    this.productosService.agregaRopaToAPI(tipo, cantidad, precio, descripcion)
       .subscribe(
         (res) => {
           alert('Producto añadido exitosamente');

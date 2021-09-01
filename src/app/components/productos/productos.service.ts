@@ -27,12 +27,7 @@ export class ProductosService {
     return this.http.get(`${this.ropasURL}${id}`);
   }
   
-  addRopafromAPI(
-    tipo: string,
-    cantidad: number,
-    precio: number,
-    descripcion: string
-  ): Observable<any> {
+  agregaRopaToAPI(tipo: string, cantidad: number, precio: number, descripcion: string): Observable<any> {
     const bodyProducto = {tipo,cantidad,precio,descripcion};
     return this.http.post(this.ropasURL, bodyProducto);
   }

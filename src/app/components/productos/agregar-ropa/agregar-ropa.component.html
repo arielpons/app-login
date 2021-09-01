@@ -1,14 +1,14 @@
-<div class="container-fluid card text-center">
-    <div class="card-header">Nuevo Producto</div>
+<div class="container-fluid card text-center w-50">
+    <div class="card-header fw-bold">Nuevo Producto</div>
     <div class="card-body">
       <form class="form-signin" [formGroup]="addProductForm" (ngSubmit)="doSubmit()">
-        <label for="inputTipo" class="sr-only">Tipo: (buzo, campera, pantalon o remera)</label>
+        <label for="inputTipo" class="sr-only fw-bolder">Tipo: (buzo, campera, pantalon o remera)</label>
         <input class="form-control" autocomplete="off" id="inputTipo" formControlName="tipo" type="text" />
-        <label for="inputCantidad" class="sr-only">Cantidad</label>
+        <label for="inputCantidad" class="sr-only fw-bolder">Cantidad</label>
         <input class="form-control" autocomplete="off" id="inputCantidad" formControlName="cantidad" type="number" />
-        <label for="inputPrecio" class="sr-only">Precio</label>
+        <label for="inputPrecio" class="sr-only fw-bolder">Precio en USD</label>
         <input class="form-control" autocomplete="off" id="inputPrecio" formControlName="precio" type="number" />
-        <label for="inputDescripcion" class="sr-only">Descripcion</label>
+        <label for="inputDescripcion" class="sr-only fw-bolder">Descripción</label>
         <input class="form-control" id="inputDescripcion" formControlName="descripcion" type="text" />
         <button class="btn btn-primary btn-block mt-5" type="submit"> Agregar Producto </button>
       </form>
